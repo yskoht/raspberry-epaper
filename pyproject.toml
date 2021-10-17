@@ -6,6 +6,7 @@ authors = ["yskoht <ysk.oht@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+waveshare-epaper = "^1.0.2"
 
 [tool.poetry.scripts]
 epaper-print = 'raspberry_epaper.print:main'

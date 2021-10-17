@@ -1,8 +1,18 @@
-package = []
+[[package]]
+name = "waveshare-epaper"
+version = "1.0.2"
+description = "Waveshare e-paper package for Python on Raspberry Pi"
+category = "main"
+optional = false
+python-versions = "*"
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "935b488be9f11b23f14aa1ce3bed4013d88bd77462534b5e4fe5bb82b485bfe9"
+content-hash = "5e79c4caff5a34b3d41d929c493180498e2d020c0aaca806e9373423ab238533"
 
 [metadata.files]
+waveshare-epaper = [
+    {file = "waveshare-epaper-1.0.2.tar.gz", hash = "sha256:336ad5fe3f9df1bc586666ba391512d740ed984d1aa4f8a901d1c7cae76c89ac"},
+    {file = "waveshare_epaper-1.0.2-py2.py3-none-any.whl", hash = "sha256:aebc1dda32f486e6dad278473c32f18d022ec9939e8375879904ae288872f295"},
+]
