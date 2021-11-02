@@ -33,7 +33,7 @@ def get_filepath(path):
     filepaths = []
     for ext in exts:
         filepaths += glob.glob('{}/*.{}'.format(path, ext))
-    random.shuffle(files)
+    random.shuffle(filepaths)
     return filepaths[0]
 
 
