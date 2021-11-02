@@ -12,7 +12,7 @@ from PIL import Image,ImageDraw,ImageFont
 
 from raspberry_epaper.epd import EPD
 from raspberry_epaper.fitting import fitting
-from raspberry_epaper.getBackgroundColor import getBackgroundColor
+from raspberry_epaper.get_background_color import get_background_color
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -82,7 +82,7 @@ def get_path_type(path):
 
 def build_image(epd, image_filepath):
     foreImage = Image.open(image_filepath)
-    backColor = getBackgroundColor(foreImage)
+    backColor = get_background_color(foreImage)
     backImage = Image.new('1', (epd.width(), epd.height()), backColor)
     image = fitting(foreImage, backImage)
     return image
