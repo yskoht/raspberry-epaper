@@ -7,6 +7,7 @@ import argparse
 import os
 import mimetypes
 import sys
+import qrcode
 
 from PIL import Image,ImageDraw,ImageFont
 
@@ -93,6 +94,10 @@ def build_text_image(epd, text_filepath):
 
 
 def overlay_qr_code(image, qr):
+    _qr_image = qrcode.make(qr)
+    qr_image = _qr_image.resize((60, 60))
+    _, height = image.size
+    image.paste(qr_image, (5, height - 60 - 5))
     return image
 
 
