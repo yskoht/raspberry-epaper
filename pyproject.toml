@@ -6,7 +6,7 @@ authors = ["yskoht <ysk.oht@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-waveshare-epaper = "^1.0.2"
+waveshare-epaper = "^1.0.3"
 Pillow = "^8.4.0"
 
 [tool.poetry.scripts]

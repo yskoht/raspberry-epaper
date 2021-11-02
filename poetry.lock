@@ -7,17 +7,37 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "rpi.gpio"
+version = "0.7.0"
+description = "A module to control Raspberry Pi GPIO channels"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "spidev"
+version = "3.5"
+description = "Python bindings for Linux SPI access through spidev"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "waveshare-epaper"
-version = "1.0.2"
+version = "1.0.3"
 description = "Waveshare e-paper package for Python on Raspberry Pi"
 category = "main"
 optional = false
 python-versions = "*"
 
+[package.dependencies]
+"RPi.GPIO" = ">=0.7.0,<0.8.0"
+spidev = ">=3.5,<4.0"
+
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8"
-content-hash = "6000da00b071ff749964c814826197ec2912e06a8b33472f09ca36275e096c1b"
+python-versions = "^3.6"
+content-hash = "026513c056b97f524b6079e7ae059ff571d058cf284cda7385fbfbee8feab14e"
 
 [metadata.files]
 pillow = [
@@ -63,7 +83,13 @@ pillow = [
     {file = "Pillow-8.4.0-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:244cf3b97802c34c41905d22810846802a3329ddcb93ccc432870243211c79fc"},
     {file = "Pillow-8.4.0.tar.gz", hash = "sha256:b8e2f83c56e141920c39464b852de3719dfbfb6e3c99a2d8da0edf4fb33176ed"},
 ]
+"rpi.gpio" = [
+    {file = "RPi.GPIO-0.7.0.tar.gz", hash = "sha256:7424bc6c205466764f30f666c18187a0824077daf20b295c42f08aea2cb87d3f"},
+]
+spidev = [
+    {file = "spidev-3.5.tar.gz", hash = "sha256:8a7f5c289f161ea2ac4697fa8a10918232c990678dd0053084b3c43b1363910d"},
+]
 waveshare-epaper = [
-    {file = "waveshare-epaper-1.0.2.tar.gz", hash = "sha256:336ad5fe3f9df1bc586666ba391512d740ed984d1aa4f8a901d1c7cae76c89ac"},
-    {file = "waveshare_epaper-1.0.2-py2.py3-none-any.whl", hash = "sha256:aebc1dda32f486e6dad278473c32f18d022ec9939e8375879904ae288872f295"},
+    {file = "waveshare-epaper-1.0.3.tar.gz", hash = "sha256:79d4cb94568b8246c5572d9fb678a94d0b1c8b5adf5df22aa35cb7826878889c"},
+    {file = "waveshare_epaper-1.0.3-py2.py3-none-any.whl", hash = "sha256:48d791d442a81ed30045a7fb3671434b90fec3153d30a6ff3d2b8f787af9a3f6"},
 ]
