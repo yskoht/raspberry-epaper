@@ -90,7 +90,14 @@ def build_image(epd, image_filepath):
 
 
 def build_text_image(epd, text_filepath):
-    pass
+    font12 = ImageFont.truetype('./Font.ttc', 12)
+    image = Image.new('1', (epd.width(), epd.height()), 255)
+    text = ''
+    with open(text_filepath) as f:
+        text = f.read()
+    draw = ImageDraw.Draw(image)
+    draw.text((0, 0), text, font=font12, fill=0)
+    return image
 
 
 def overlay_qr_code(image, qr):
