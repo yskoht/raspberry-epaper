@@ -8,6 +8,7 @@ authors = ["yskoht <ysk.oht@gmail.com>"]
 python = "^3.6"
 waveshare-epaper = "^1.0.3"
 Pillow = "^8.4.0"
+qrcode = "^7.3.1"
 
 [tool.poetry.scripts]
 epaper-print = 'raspberry_epaper.print:main'
