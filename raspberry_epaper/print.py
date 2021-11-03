@@ -61,6 +61,12 @@ def process(arg):
         epd.display(image)
         epd.sleep()
 
+    except KeyboardInterrupt:
+        logging.info("ctrl + c:")
+        if 'epd' in locals():
+            epd.exit()
+        sys.exit(1)
+
     except Exception as e:
         logging.error(e)
         logging.error(traceback.format_exc())
