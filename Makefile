@@ -25,7 +25,8 @@ clean:
 .PHONY: bump-version
 bump-version:
 	poetry version minor
-	git add pyproject.toml
+	sh tools/create_version_file.sh
+	git add pyproject.toml raspberry_epaper/__init__.py
 	git commit -m 'Bump version'
 
 
