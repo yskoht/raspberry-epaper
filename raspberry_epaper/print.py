@@ -9,8 +9,6 @@ from raspberry_epaper.filepath import get_filepath_and_mimetype
 from raspberry_epaper.get_background_color import get_background_color
 from raspberry_epaper.valid_types import VALID_IMAGE_TYPES, VALID_TEXT_TYPES
 
-logging.basicConfig(level=logging.DEBUG)
-
 
 def build_image(epd, image_filepath):
     foreImage = Image.open(image_filepath)

@@ -1,3 +1,4 @@
+import logging
 import os
 from typing import Optional
 
@@ -36,7 +37,23 @@ def main():
             "--qr",
             help="QR code string",
         ),
+        silent: bool = typer.Option(
+            False,
+            "--silent",
+            help="Hide log",
+        ),
+        verbose: bool = typer.Option(
+            False,
+            "--verbose",
+            help="Show debug log",
+        ),
     ):
+        logging.basicConfig(level=logging.INFO)
+        if silent:
+            logging.basicConfig(level=logging.ERROR)
+        if verbose:
+            logging.basicConfig(leven=logging.DEBUG)
+
         raspberry_epaper.print.process(
             Box(
                 path=path,
