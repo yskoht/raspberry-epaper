@@ -20,6 +20,16 @@ def main():
             "--device",
             help="waveshare device",
         ),
+        font: str = typer.Option(
+            "./font/NotoSansJP-Regular.otf",
+            "--font",
+            help="font file",
+        ),
+        font_size: int = typer.Option(
+            12,
+            "--font-size",
+            help="font size",
+        ),
         qr: Optional[str] = typer.Option(
             None,
             "-q",
@@ -31,6 +41,8 @@ def main():
             Box(
                 path=path,
                 device=device,
+                font=font,
+                font_size=font_size,
                 qr=qr,
             )
         )
