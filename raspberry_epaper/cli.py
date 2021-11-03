@@ -1,3 +1,4 @@
+import os
 from typing import Optional
 
 import typer
@@ -5,7 +6,7 @@ from box import Box
 
 import raspberry_epaper.print
 
-from . import __version__
+from . import __version__, pkg_dir
 
 
 def main():
@@ -21,7 +22,7 @@ def main():
             help="waveshare device",
         ),
         font: str = typer.Option(
-            "./font/NotoSansJP-Regular.otf",
+            os.path.join(pkg_dir, "font", "NotoSansJP-Regular.otf"),
             "--font",
             help="font file",
         ),
