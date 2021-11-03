@@ -17,16 +17,16 @@ from raspberry_epaper.get_background_color import get_background_color
 
 logging.basicConfig(level=logging.DEBUG)
 
-valid_image_types = [
+VALID_IMAGE_TYPES = [
     'image/png',
     'image/jpeg',
 ]
 
-valid_text_types = [
+VALID_TEXT_TYPES = [
     'text/plain',
 ]
 
-valid_types = valid_image_types + valid_text_types
+VALID_TYPES = VALID_IMAGE_TYPES + VALID_TEXT_TYPES
 
 def get_filepath(path):
     exts = ['jpg', 'jpeg', 'png', 'txt']
@@ -75,7 +75,7 @@ def get_path_type(path):
         return 'directory'
 
     t = mimetypes.guess_type(path)[0]
-    if t in valid_types:
+    if t in VALID_TYPES:
         return 'valid'
 
     return 'invalid'
@@ -126,7 +126,7 @@ def process():
         filepath = arg.path
 
     mimetype = mimetypes.guess_type(filepath)[0]
-    if mimetype not in valid_types:
+    if mimetype not in VALID_TYPES:
         print('Error: internal error', file=sys.stderr)
         sys.exit(1)
 
@@ -134,9 +134,9 @@ def process():
         epd = EPD(arg.device)
         epd.clear()
 
-        if mimetype in valid_image_types:
+        if mimetype in VALID_IMAGE_TYPES:
             image = build_image(epd, filepath)
-        elif mimetype in valid_text_types:
+        elif mimetype in VALID_TEXT_TYPES:
             image = build_text_image(epd, filepath)
 
         if arg.qr is not None:
