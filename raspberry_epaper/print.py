@@ -1,14 +1,13 @@
 import logging
-import qrcode
 
+import qrcode
 from PIL import Image, ImageDraw, ImageFont
 
-from raspberry_epaper.epd import EPD
 from raspberry_epaper.combine import combine
-from raspberry_epaper.get_background_color import get_background_color
+from raspberry_epaper.epd import EPD
 from raspberry_epaper.filepath import get_filepath_and_mimetype
+from raspberry_epaper.get_background_color import get_background_color
 from raspberry_epaper.valid_types import VALID_IMAGE_TYPES, VALID_TEXT_TYPES
-
 
 logging.basicConfig(level=logging.DEBUG)
 

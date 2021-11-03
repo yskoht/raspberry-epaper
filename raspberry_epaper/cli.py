@@ -1,9 +1,11 @@
 from typing import Optional
+
 import typer
 from box import Box
 
-from . import __version__
 import raspberry_epaper.print
+
+from . import __version__
 
 
 def main():

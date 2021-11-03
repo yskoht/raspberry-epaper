@@ -1,5 +1,6 @@
-import epaper
 import time
+
+import epaper
 
 
 class EPD:

@@ -1,8 +1,8 @@
-import os
 import glob
+import mimetypes
+import os
 import random
 import sys
-import mimetypes
 
 from raspberry_epaper.valid_types import VALID_FILE_TYPES
 
