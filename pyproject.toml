@@ -16,6 +16,9 @@ toml = "^0.10.2"
 [tool.poetry.scripts]
 epaper = 'raspberry_epaper.cli:main'
 
+
+[tool.poetry.dev-dependencies]
+black = "^21.10b0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
