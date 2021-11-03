@@ -2,6 +2,7 @@ from typing import Optional
 import typer
 from box import Box
 
+from . import __version__
 import raspberry_epaper.print
 
 def main():
@@ -32,9 +33,10 @@ def main():
       )
     )
 
+
   @app.command()
   def version():
-    typer.echo('version')
+    typer.echo(__version__)
 
 
   app()
