@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "raspberry-epaper"
-version = "0.2.0"
+version = "0.3.0"
 description = "A tool to easily use waveshare's e-paper module with Raspberry Pi"
 authors = ["yskoht <ysk.oht@gmail.com>"]
 license = "MIT"
