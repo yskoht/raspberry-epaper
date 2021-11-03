@@ -10,7 +10,7 @@ import raspberry_epaper.print
 from . import __version__
 
 PKG_DIR = os.path.dirname(__file__)
-LOG_FORMAT = "[%(levelname)s](%(filename)s:%(lineno)d:%(funcName)s) %(message)s"
+LOG_FORMAT = "%(asctime)s [%(levelname)s](%(filename)s:%(lineno)d:%(funcName)s) %(message)s"
 
 
 def main():
