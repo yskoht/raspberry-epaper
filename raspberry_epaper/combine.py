@@ -40,8 +40,8 @@ def resize(foreImage, backImage):
         return foreImage.resize((bw, nh))
 
 
-def fitting(_foreImage, backImage):
-    cropped = crop(_foreImage, backImage)
+def combine(foreImage, backImage):
+    cropped = crop(foreImage, backImage)
     resized = resize(cropped, backImage)
 
     w, h = resized.size

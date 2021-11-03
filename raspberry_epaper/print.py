@@ -12,7 +12,7 @@ import qrcode
 from PIL import Image,ImageDraw,ImageFont
 
 from raspberry_epaper.epd import EPD
-from raspberry_epaper.fitting import fitting
+from raspberry_epaper.combine import combine
 from raspberry_epaper.get_background_color import get_background_color
 
 logging.basicConfig(level=logging.DEBUG)
@@ -85,7 +85,7 @@ def build_image(epd, image_filepath):
     foreImage = Image.open(image_filepath)
     backColor = get_background_color(foreImage)
     backImage = Image.new('1', (epd.width(), epd.height()), backColor)
-    image = fitting(foreImage, backImage)
+    image = combine(foreImage, backImage)
     return image
 
 
