@@ -1,8 +1,18 @@
 [tool.poetry]
 name = "raspberry-epaper"
 version = "0.2.0"
-description = ""
+description = "A tool to easily use waveshare's e-paper module with Raspberry Pi"
 authors = ["yskoht <ysk.oht@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage="https://github.com/yskoht/raspberry-epaper"
+repository="https://github.com/yskoht/raspberry-epaper"
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
 include = ["font"]
 
 [tool.poetry.dependencies]
