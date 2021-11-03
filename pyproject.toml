@@ -13,8 +13,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-include = ["font"]
-
 [tool.poetry.dependencies]
 python = "^3.7"
 waveshare-epaper = "^1.0.3"

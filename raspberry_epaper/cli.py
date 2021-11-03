@@ -7,8 +7,9 @@ from box import Box
 
 import raspberry_epaper.print
 
-from . import __version__, pkg_dir
+from . import __version__
 
+PKG_DIR = os.path.dirname(__file__)
 LOG_FORMAT = "[%(levelname)s](%(filename)s:%(lineno)d:%(funcName)s) %(message)s"
 
 
@@ -25,7 +26,7 @@ def main():
             help="waveshare device",
         ),
         font: str = typer.Option(
-            os.path.join(pkg_dir, "font", "NotoSansJP-Regular.otf"),
+            os.path.join(PKG_DIR, "font", "NotoSansJP-Regular.otf"),
             "--font",
             help="font file",
         ),
