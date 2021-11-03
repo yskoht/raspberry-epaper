@@ -3,7 +3,6 @@ import glob
 import logging
 import time
 import traceback
-import argparse
 import os
 import mimetypes
 import sys
@@ -35,37 +34,6 @@ def get_filepath(path):
         filepaths += glob.glob('{}/*.{}'.format(path, ext))
     random.shuffle(filepaths)
     return filepaths[0]
-
-
-def parse_arg():
-    description = 'e-paper utility'
-    parser = argparse.ArgumentParser(
-        description=description,
-        formatter_class=argparse.RawTextHelpFormatter
-    )
-
-    parser.add_argument(
-        '-d',
-        '--device',
-        type=str,
-        metavar='device',
-        help='waveshare device'
-    )
-    parser.add_argument(
-        '-q',
-        '--qr',
-        type=str,
-        metavar='qr',
-        help='QR code string'
-    )
-    parser.add_argument(
-        'path',
-        type=str,
-        help='picture, directory or text file'
-    )
-
-    arg = parser.parse_args()
-    return arg
 
 
 def get_path_type(path):
@@ -108,8 +76,8 @@ def overlay_qr_code(image, qr):
     return image
 
 
-def process():
-    arg = parse_arg()
+def process(arg):
+    logging.info(arg)
     path_type = get_path_type(arg.path)
 
     if path_type == 'not_found':
@@ -152,7 +120,3 @@ def process():
         logging.info("ctrl + c:")
         epd.exit()
         exit()
-
-
-def main():
-    process()
