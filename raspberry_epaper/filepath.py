@@ -43,7 +43,7 @@ def get_filepath_and_mimetype(path):
     if path_type == "directory":
         filepath = get_filepath(path)
     else:
-        filepath = arg.path
+        filepath = path
 
     mimetype = mimetypes.guess_type(filepath)[0]
     if mimetype not in VALID_FILE_TYPES:
