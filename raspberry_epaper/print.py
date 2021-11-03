@@ -64,5 +64,6 @@ def process(arg):
     except Exception as e:
         logging.error(e)
         logging.error(traceback.format_exc())
-        epd.exit()
+        if 'epd' in locals():
+            epd.exit()
         sys.exit(1)
