@@ -1,11 +1,4 @@
-import random
-import glob
 import logging
-import time
-import traceback
-import os
-import mimetypes
-import sys
 import qrcode
 
 from PIL import Image,ImageDraw,ImageFont
@@ -13,40 +6,11 @@ from PIL import Image,ImageDraw,ImageFont
 from raspberry_epaper.epd import EPD
 from raspberry_epaper.combine import combine
 from raspberry_epaper.get_background_color import get_background_color
+from raspberry_epaper.filepath import get_filepath_and_mimetype
+from raspberry_epaper.valid_types import VALID_IMAGE_TYPES, VALID_TEXT_TYPES
+
 
 logging.basicConfig(level=logging.DEBUG)
-
-VALID_IMAGE_TYPES = [
-    'image/png',
-    'image/jpeg',
-]
-
-VALID_TEXT_TYPES = [
-    'text/plain',
-]
-
-VALID_TYPES = VALID_IMAGE_TYPES + VALID_TEXT_TYPES
-
-def get_filepath(path):
-    exts = ['jpg', 'jpeg', 'png', 'txt']
-    filepaths = []
-    for ext in exts:
-        filepaths += glob.glob('{}/*.{}'.format(path, ext))
-    random.shuffle(filepaths)
-    return filepaths[0]
-
-
-def get_path_type(path):
-    if not os.path.exists(path):
-        return 'not_found'
-    if os.path.isdir(path):
-        return 'directory'
-
-    t = mimetypes.guess_type(path)[0]
-    if t in VALID_TYPES:
-        return 'valid'
-
-    return 'invalid'
 
 
 def build_image(epd, image_filepath):
@@ -78,25 +42,7 @@ def overlay_qr_code(image, qr):
 
 def process(arg):
     logging.info(arg)
-    path_type = get_path_type(arg.path)
-
-    if path_type == 'not_found':
-        print('Error: path dose not exist', file=sys.stderr)
-        sys.exit(1)
-
-    if path_type == 'invalid':
-        print('Error: path is invalid', file=sys.stderr)
-        sys.exit(1)
-
-    if path_type == 'directory':
-        filepath  = get_filepath(arg.path)
-    else:
-        filepath = arg.path
-
-    mimetype = mimetypes.guess_type(filepath)[0]
-    if mimetype not in VALID_TYPES:
-        print('Error: internal error', file=sys.stderr)
-        sys.exit(1)
+    filepath, mimetype = get_filepath_and_mimetype(arg.path)
 
     try:
         epd = EPD(arg.device)
