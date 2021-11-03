@@ -33,7 +33,6 @@ def main():
         ),
         qr: Optional[str] = typer.Option(
             None,
-            "-q",
             "--qr",
             help="QR code string",
         ),
