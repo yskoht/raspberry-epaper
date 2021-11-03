@@ -8,19 +8,21 @@ def crop(foreImage, backImage):
     fa = float(fw) / float(fh)
     ba = float(bw) / float(bh)
 
-    logging.info("{:.3f}, {:.3f}".format(fa, ba))
+    logging.debug("Foreimage aspect ratio:{:.3f}".format(fa))
+    logging.debug("E-paper aspect ratio:{:.3f}".format(ba))
 
     # 4:3 ~ 16:9
     if not 1.332 < fa < 1.778:
+        logging.debug("Foreimage was not cropped")
         return foreImage
 
     if fa < ba:
         nh = fw / ba
-        logging.info("nh: {:.3f}".format(nh))
+        logging.debug("Foreimage was cropped {}x{} -> {}x{}".format(fw, fh, fw, nh))
         return foreImage.crop((0, (fh - nh) // 2, fw, (fh + nh) // 2))
     else:
         nw = ba * fh
-        logging.info("nw: {:.3f}".format(nw))
+        logging.debug("Foreimage was cropped {}x{} -> {}x{}".format(fw, fh, nw, fh))
         return foreImage.crop(((fw - nw) // 2, 0, (fw + nw) // 2, fh))
 
 
@@ -31,13 +33,16 @@ def resize(foreImage, backImage):
     fa = float(fw) / float(fh)
     ba = float(bw) / float(bh)
 
-    logging.info("{:.3f}, {:.3f}".format(fa, ba))
+    logging.debug("Foreimage aspect ratio:{:.3f}".format(fa))
+    logging.debug("E-paper aspect ratio:{:.3f}".format(ba))
 
     if fa < ba:
         nw = int(float(bh) / float(fh) * fw)
+        logging.debug("Foreimage was resized {}x{} -> {}x{}".format(fw, fh, nw, bh))
         return foreImage.resize((nw, bh))
     else:
         nh = int(float(bw) / float(fw) * fh)
+        logging.debug("Foreimage was resized {}x{} -> {}x{}".format(fw, fh, bw, nh))
         return foreImage.resize((bw, nh))
 
 
@@ -50,6 +55,7 @@ def combine(foreImage, backImage):
 
     x = int((bw - w) / 2.0)
     y = int((bh - h) / 2.0)
+    logging.debug("Placed ({}, {}), ({}, {})".format(x, y, x + w, y + h))
     backImage.paste(resized, (x, y))
 
     return backImage

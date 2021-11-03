@@ -1,3 +1,4 @@
+import logging
 import time
 
 import epaper
@@ -5,15 +6,18 @@ import epaper
 
 class EPD:
     def __init__(self, device):
+        logging.debug("Initialize:{}".format(device))
         self.epdLib = epaper.epaper(device)
         self.epd = self.epdLib.EPD()
 
     def clear(self):
+        logging.debug("Clear")
         self.epd.init()
         self.epd.Clear()
         time.sleep(1)
 
     def display(self, blackImage, colorImage=None):
+        logging.debug("Display")
         if colorImage:
             self.epd.display(
                 self.epd.getbuffer(blackImage), self.epd.getbuffer(colorImage)
@@ -22,9 +26,11 @@ class EPD:
             self.epd.display(self.epd.getbuffer(blackImage))
 
     def sleep(self):
+        logging.debug("Sleep")
         self.epd.sleep()
 
     def exit(self):
+        logging.debug("Exit")
         self.epdLib.epdconfig.module_exit()
 
     def width(self):

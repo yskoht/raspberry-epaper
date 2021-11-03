@@ -9,6 +9,8 @@ import raspberry_epaper.print
 
 from . import __version__, pkg_dir
 
+LOG_FORMAT = "[%(levelname)s](%(filename)s:%(lineno)d:%(funcName)s) %(message)s"
+
 
 def main():
     app = typer.Typer(add_completion=False)
@@ -48,11 +50,12 @@ def main():
             help="Show debug log",
         ),
     ):
-        logging.basicConfig(level=logging.INFO)
-        if silent:
-            logging.basicConfig(level=logging.ERROR)
         if verbose:
-            logging.basicConfig(leven=logging.DEBUG)
+            logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT)
+        elif silent:
+            logging.basicConfig(level=logging.ERROR, format=LOG_FORMAT)
+        else:
+            logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 
         raspberry_epaper.print.process(
             Box(

@@ -1,4 +1,5 @@
 import glob
+import logging
 import mimetypes
 import os
 import random
@@ -25,29 +26,33 @@ def get_filepath(path):
     filepaths = []
     for ext in exts:
         filepaths += glob.glob("{}/*.{}".format(path, ext))
+    logging.debug("Number of files:{}".format(len(filepaths)))
     random.shuffle(filepaths)
     return filepaths[0]
 
 
 def get_filepath_and_mimetype(path):
     path_type = get_path_type(path)
+    logging.debug("Path type:{}".format(path_type))
 
     if path_type == "not_found":
-        print("Error: path dose not exist", file=sys.stderr)
+        logging.error("Path dose not exist")
         sys.exit(1)
 
     if path_type == "invalid":
-        print("Error: path is invalid", file=sys.stderr)
+        logging.error("Path is invalid")
         sys.exit(1)
 
     if path_type == "directory":
         filepath = get_filepath(path)
     else:
         filepath = path
+    logging.info("File path:{}".format(filepath))
 
     mimetype = mimetypes.guess_type(filepath)[0]
+    logging.info("Mimetype:{}".format(mimetype))
     if mimetype not in VALID_FILE_TYPES:
-        print("Error: internal error", file=sys.stderr)
+        logging.error("Internal error")
         sys.exit(1)
 
     return (filepath, mimetype)

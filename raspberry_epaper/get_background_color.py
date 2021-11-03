@@ -28,11 +28,15 @@ def get_background_color(image):
     b = pix["black"]
     w = pix["white"]
     r = float(w) / float(s)
-    logging.info(
-        "width: {}, height: {}, pixel {}, white: {}, black: {}, white rate: {:.3f}".format(
-            width, height, s, w, b, r
-        )
-    )
+
+    logging.debug("Width:{}".format(width))
+    logging.debug("Height:{}".format(height))
+    logging.debug("Number of pixel:{}".format(s))
+    logging.debug("Number of white:{}".format(w))
+    logging.debug("Number of black:{}".format(b))
+    logging.debug("White rate:{:.3f}".format(r))
+    logging.debug("Threshold:{}".format(TH))
+    logging.debug("Background color is black:{}".format(r < TH))
 
     if r < TH:
         return 0

@@ -6,5 +6,5 @@ format:
 
 .PHONY: lint
 lint:
-	poetry run flake8 --ignore=E501 raspberry_epaper
+	poetry run flake8 --ignore=E501,W503 raspberry_epaper
 

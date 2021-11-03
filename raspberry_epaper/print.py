@@ -1,4 +1,6 @@
 import logging
+import sys
+import traceback
 
 import qrcode
 from PIL import Image, ImageDraw, ImageFont
@@ -19,6 +21,9 @@ def build_image(epd, image_filepath):
 
 
 def build_text_image(epd, text_filepath, font, font_size):
+    logging.debug("Font:{}".format(font))
+    logging.debug("Font size:{}".format(font_size))
+
     font = ImageFont.truetype(font, font_size)
     image = Image.new("1", (epd.width(), epd.height()), 255)
     text = ""
@@ -38,7 +43,7 @@ def overlay_qr_code(image, qr):
 
 
 def process(arg):
-    logging.info(arg)
+    logging.debug("Arguments:{}".format(arg))
     filepath, mimetype = get_filepath_and_mimetype(arg.path)
 
     try:
@@ -56,10 +61,8 @@ def process(arg):
         epd.display(image)
         epd.sleep()
 
-    except IOError as e:
-        logging.info(e)
-
-    except KeyboardInterrupt:
-        logging.info("ctrl + c:")
+    except Exception as e:
+        logging.error(e)
+        logging.error(traceback.format_exc())
         epd.exit()
-        exit()
+        sys.exit(1)
