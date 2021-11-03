@@ -3,6 +3,7 @@ name = "raspberry-epaper"
 version = "0.1.0"
 description = ""
 authors = ["yskoht <ysk.oht@gmail.com>"]
+include = ["font"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
