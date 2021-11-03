@@ -1,7 +1,7 @@
 import logging
 import qrcode
 
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 from raspberry_epaper.epd import EPD
 from raspberry_epaper.combine import combine
@@ -16,15 +16,15 @@ logging.basicConfig(level=logging.DEBUG)
 def build_image(epd, image_filepath):
     foreImage = Image.open(image_filepath)
     backColor = get_background_color(foreImage)
-    backImage = Image.new('1', (epd.width(), epd.height()), backColor)
+    backImage = Image.new("1", (epd.width(), epd.height()), backColor)
     image = combine(foreImage, backImage)
     return image
 
 
 def build_text_image(epd, text_filepath):
-    font12 = ImageFont.truetype('./Font.ttc', 12)
-    image = Image.new('1', (epd.width(), epd.height()), 255)
-    text = ''
+    font12 = ImageFont.truetype("./Font.ttc", 12)
+    image = Image.new("1", (epd.width(), epd.height()), 255)
+    text = ""
     with open(text_filepath) as f:
         text = f.read()
     draw = ImageDraw.Draw(image)

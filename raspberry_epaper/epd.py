@@ -1,6 +1,7 @@
 import epaper
 import time
 
+
 class EPD:
     def __init__(self, device):
         self.epdLib = epaper.epaper(device)
@@ -14,13 +15,10 @@ class EPD:
     def display(self, blackImage, colorImage=None):
         if colorImage:
             self.epd.display(
-                self.epd.getbuffer(blackImage),
-                self.epd.getbuffer(colorImage)
+                self.epd.getbuffer(blackImage), self.epd.getbuffer(colorImage)
             )
         else:
-            self.epd.display(
-                self.epd.getbuffer(blackImage)
-            )
+            self.epd.display(self.epd.getbuffer(blackImage))
 
     def sleep(self):
         self.epd.sleep()

@@ -1,5 +1,6 @@
 import logging
 
+
 def crop(foreImage, backImage):
     fw, fh = foreImage.size
     bw, bh = backImage.size
@@ -7,7 +8,7 @@ def crop(foreImage, backImage):
     fa = float(fw) / float(fh)
     ba = float(bw) / float(bh)
 
-    logging.info('{:.3f}, {:.3f}'.format(fa, ba))
+    logging.info("{:.3f}, {:.3f}".format(fa, ba))
 
     # 4:3 ~ 16:9
     if not 1.332 < fa < 1.778:
@@ -15,11 +16,11 @@ def crop(foreImage, backImage):
 
     if fa < ba:
         nh = fw / ba
-        logging.info('nh: {:.3f}'.format(nh))
+        logging.info("nh: {:.3f}".format(nh))
         return foreImage.crop((0, (fh - nh) // 2, fw, (fh + nh) // 2))
     else:
         nw = ba * fh
-        logging.info('nw: {:.3f}'.format(nw))
+        logging.info("nw: {:.3f}".format(nw))
         return foreImage.crop(((fw - nw) // 2, 0, (fw + nw) // 2, fh))
 
 
@@ -30,7 +31,7 @@ def resize(foreImage, backImage):
     fa = float(fw) / float(fh)
     ba = float(bw) / float(bh)
 
-    logging.info('{:.3f}, {:.3f}'.format(fa, ba))
+    logging.info("{:.3f}, {:.3f}".format(fa, ba))
 
     if fa < ba:
         nw = int(float(bh) / float(fh) * fw)
