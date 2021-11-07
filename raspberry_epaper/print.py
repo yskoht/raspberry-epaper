@@ -44,7 +44,7 @@ def overlay_qr_code(image, qr):
 
 def process(arg):
     logging.debug("Arguments:{}".format(arg))
-    filepath, mimetype = get_filepath_and_mimetype(arg.path)
+    filepath, mimetype = get_filepath_and_mimetype(arg.path, arg.order)
 
     try:
         epd = EPD(arg.device)
@@ -63,13 +63,13 @@ def process(arg):
 
     except KeyboardInterrupt:
         logging.info("ctrl + c:")
-        if 'epd' in locals():
+        if "epd" in locals():
             epd.exit()
         sys.exit(1)
 
     except Exception as e:
         logging.error(e)
         logging.error(traceback.format_exc())
-        if 'epd' in locals():
+        if "epd" in locals():
             epd.exit()
         sys.exit(1)

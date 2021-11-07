@@ -6,11 +6,14 @@ import typer
 from box import Box
 
 import raspberry_epaper.print
+from raspberry_epaper.type import Order
 
 from . import __version__
 
 PKG_DIR = os.path.dirname(__file__)
-LOG_FORMAT = "%(asctime)s [%(levelname)s](%(filename)s:%(lineno)d:%(funcName)s) %(message)s"
+LOG_FORMAT = (
+    "%(asctime)s [%(levelname)s](%(filename)s:%(lineno)d:%(funcName)s) %(message)s"
+)
 
 
 def main():
@@ -35,6 +38,7 @@ def main():
             "--font-size",
             help="font size",
         ),
+        order: Order = Order.random,
         qr: Optional[str] = typer.Option(
             None,
             "--qr",
@@ -64,6 +68,7 @@ def main():
                 device=device,
                 font=font,
                 font_size=font_size,
+                order=order,
                 qr=qr,
             )
         )
