@@ -6,6 +6,7 @@ import typer
 from box import Box
 
 import raspberry_epaper.print
+from raspberry_epaper.epd import EPD
 from raspberry_epaper.type import Order
 
 from . import __version__
@@ -76,5 +77,10 @@ def main():
     @app.command()
     def version():
         typer.echo(__version__)
+
+    @app.command()
+    def modules():
+        for module in EPD.modules():
+            typer.echo(module)
 
     app()

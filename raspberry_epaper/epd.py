@@ -5,6 +5,10 @@ import epaper
 
 
 class EPD:
+    @staticmethod
+    def modules():
+        return epaper.modules()
+
     def __init__(self, device):
         logging.debug("Initialize:{}".format(device))
         self.epdLib = epaper.epaper(device)
