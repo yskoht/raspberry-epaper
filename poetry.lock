@@ -251,7 +251,7 @@ python-versions = "*"
 
 [[package]]
 name = "waveshare-epaper"
-version = "1.0.3"
+version = "1.1.1"
 description = "Waveshare e-paper package for Python on Raspberry Pi"
 category = "main"
 optional = false
@@ -276,7 +276,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "a5be19f041a909670a468b537e6598f390831cd19d7c7c5f827abdff9202d49d"
+content-hash = "5d5dbc72ce34c7e9f56ed5d55dc593de091efc2a2f43ba70b9472b8e49b0a2bc"
 
 [metadata.files]
 black = [
@@ -480,8 +480,8 @@ typing-extensions = [
     {file = "typing_extensions-3.10.0.2.tar.gz", hash = "sha256:49f75d16ff11f1cd258e1b988ccff82a3ca5570217d7ad8c5f48205dd99a677e"},
 ]
 waveshare-epaper = [
-    {file = "waveshare-epaper-1.0.3.tar.gz", hash = "sha256:79d4cb94568b8246c5572d9fb678a94d0b1c8b5adf5df22aa35cb7826878889c"},
-    {file = "waveshare_epaper-1.0.3-py2.py3-none-any.whl", hash = "sha256:48d791d442a81ed30045a7fb3671434b90fec3153d30a6ff3d2b8f787af9a3f6"},
+    {file = "waveshare-epaper-1.1.1.tar.gz", hash = "sha256:799bc574a338064e71d98e6e0ce9e7f1c9a56263ef8d0642ac458f3f6c528e14"},
+    {file = "waveshare_epaper-1.1.1-py2.py3-none-any.whl", hash = "sha256:1c961291b3e08de48f49bc9b46dde50e66cbc097835675b37ced260035a1cb11"},
 ]
 zipp = [
     {file = "zipp-3.6.0-py3-none-any.whl", hash = "sha256:9fe5ea21568a0a70e50f273397638d39b03353731e6cbbb3fd8502a33fec40bc"},
