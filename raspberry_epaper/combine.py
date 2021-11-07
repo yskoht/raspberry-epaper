@@ -46,9 +46,14 @@ def resize(foreImage, backImage):
         return foreImage.resize((bw, nh))
 
 
-def combine(foreImage, backImage):
-    cropped = crop(foreImage, backImage)
-    resized = resize(cropped, backImage)
+def combine(foreImage, backImage, opt):
+    if opt["crop"]:
+        logging.debug("Crop")
+        pre_processed = crop(foreImage, backImage)
+    else:
+        logging.debug("No crop")
+        pre_processed = foreImage
+    resized = resize(pre_processed, backImage)
 
     w, h = resized.size
     bw, bh = backImage.size

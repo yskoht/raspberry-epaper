@@ -23,6 +23,11 @@ def main():
     @app.command()
     def print(
         path: str,
+        crop: bool = typer.Option(
+            True,
+            "--crop/--no-crop",
+            help="Crop image",
+        ),
         device: Device = typer.Option(
             ...,
             "-d",
@@ -70,6 +75,7 @@ def main():
         raspberry_epaper.print.process(
             Box(
                 path=path,
+                crop=crop,
                 device=device,
                 font=font,
                 font_size=font_size,

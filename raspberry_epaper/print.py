@@ -12,11 +12,11 @@ from raspberry_epaper.get_background_color import get_background_color
 from raspberry_epaper.valid_types import VALID_IMAGE_TYPES, VALID_TEXT_TYPES
 
 
-def build_image(epd, image_filepath):
+def build_image(epd, image_filepath, **opt):
     foreImage = Image.open(image_filepath)
     backColor = get_background_color(foreImage)
     backImage = Image.new("1", (epd.width(), epd.height()), backColor)
-    image = combine(foreImage, backImage)
+    image = combine(foreImage, backImage, opt)
     return image
 
 
@@ -51,7 +51,7 @@ def process(arg):
         epd.clear()
 
         if mimetype in VALID_IMAGE_TYPES:
-            image = build_image(epd, filepath)
+            image = build_image(epd, filepath, crop=arg.crop)
         elif mimetype in VALID_TEXT_TYPES:
             image = build_text_image(epd, filepath, arg.font, arg.font_size)
 
