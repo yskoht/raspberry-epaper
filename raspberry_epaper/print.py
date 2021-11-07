@@ -47,7 +47,7 @@ def process(arg):
     filepath, mimetype = get_filepath_and_mimetype(arg.path, arg.order)
 
     try:
-        epd = EPD(arg.device)
+        epd = EPD(arg.device.value)
         epd.clear()
 
         if mimetype in VALID_IMAGE_TYPES:

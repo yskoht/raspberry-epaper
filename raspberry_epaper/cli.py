@@ -7,7 +7,7 @@ from box import Box
 
 import raspberry_epaper.print
 from raspberry_epaper.epd import EPD
-from raspberry_epaper.type import Order
+from raspberry_epaper.type import Device, Order
 
 from . import __version__
 
@@ -23,7 +23,7 @@ def main():
     @app.command()
     def print(
         path: str,
-        device: str = typer.Option(
+        device: Device = typer.Option(
             ...,
             "-d",
             "--device",
