@@ -27,19 +27,23 @@ def main():
             ...,
             "-d",
             "--device",
-            help="waveshare device",
+            help="Waveshare device",
         ),
         font: str = typer.Option(
             os.path.join(PKG_DIR, "font", "NotoSansJP-Regular.otf"),
             "--font",
-            help="font file",
+            help="Font file",
         ),
         font_size: int = typer.Option(
             12,
             "--font-size",
-            help="font size",
+            help="Font size",
         ),
-        order: Order = Order.random,
+        order: Order = typer.Option(
+            Order.random,
+            "--order",
+            help="Order of files",
+        ),
         qr: Optional[str] = typer.Option(
             None,
             "--qr",
