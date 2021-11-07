@@ -37,13 +37,26 @@ Overlay the QR code on the image.
 $ epaper print --device="epd7in5" --qr="information about the picture" picture.png
 ```
 
+Show help.
+
+```sh
+$ epaper print --help
+```
+
+### modules
+
+Show available e-paper modules.
+
+```sh
+$ epaper modules
+```
+
 ### version
 
 Show version.
 
 ```sh
 $ epaper version
-0.1.0
 ```
 
 ## License
