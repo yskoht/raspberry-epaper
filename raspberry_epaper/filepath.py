@@ -47,7 +47,7 @@ def get_next_filepath(filepaths, prev, order):
 
 
 def get_filepath(path, order):
-    exts = ["jpg", "jpeg", "png", "txt"]
+    exts = ["jpg", "jpeg", "png", "txt", "JPG", "JPEG", "PNG", "TXT"]
     filepaths = []
     for ext in exts:
         filepaths += glob.glob("{}/*.{}".format(path, ext))
