@@ -15,7 +15,7 @@ from raspberry_epaper.valid_types import VALID_IMAGE_TYPES, VALID_TEXT_TYPES
 def build_image(epd, image_filepath, **opt):
     fore_image = Image.open(image_filepath)
     back_color = get_background_color(fore_image)
-    back_image = Image.new("1", (epd.width(), epd.height()), back_color)
+    back_image = Image.new("1", (epd.width, epd.height), back_color)
     image = combine(fore_image, back_image, opt)
     return image
 
@@ -25,7 +25,7 @@ def build_text_image(epd, text_filepath, font, font_size):
     logging.debug("Font size:{}".format(font_size))
 
     font = ImageFont.truetype(font, font_size)
-    image = Image.new("1", (epd.width(), epd.height()), 255)
+    image = Image.new("1", (epd.width, epd.height), 255)
     text = ""
     with open(text_filepath) as f:
         text = f.read()
