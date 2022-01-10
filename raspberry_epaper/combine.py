@@ -61,6 +61,6 @@ def combine(fore_image, back_image, opt):
     x = int((bw - w) / 2.0)
     y = int((bh - h) / 2.0)
     logging.debug("Placed ({}, {}), ({}, {})".format(x, y, x + w, y + h))
-    back_image.paste(resized, (x, y))
+    back_image.convert('rgb').paste(resized, (x, y))
 
     return back_image
