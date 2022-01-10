@@ -39,6 +39,6 @@ def get_background_color(image):
     logging.debug("Background color is black:{}".format(r < TH))
 
     if r < TH:
-        return 0
+        return 'black'
     else:
-        return 255
+        return 'white'

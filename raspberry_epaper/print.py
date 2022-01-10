@@ -15,7 +15,7 @@ from raspberry_epaper.valid_types import VALID_IMAGE_TYPES, VALID_TEXT_TYPES
 def build_image(epd, image_filepath, **opt):
     fore_image = Image.open(image_filepath)
     back_color = get_background_color(fore_image)
-    back_image = Image.new("1", (epd.width, epd.height), back_color)
+    back_image = Image.new("RGB", (epd.width, epd.height), back_color)
     image = combine(fore_image, back_image, opt)
     return image
 
